@@ -161,4 +161,7 @@ fn main() {
 
   println!("\t--- Unions");
   data_structures::unions();
+
+  println!("\t--- Options");
+  data_structures::options();
 }
