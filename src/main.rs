@@ -1,5 +1,6 @@
 use std::mem;
 mod stack_and_heap;
+mod control_flow;
 
 const MEANING_OF_LIFE:u8 = 42; // Constants have no fixed address
 
@@ -135,5 +136,11 @@ fn main() {
   defining_and_using_constants();
 
   println!("\n\r--- STACK AND HEAP ---");
-  stack_and_heap::stack_and_heap()
+  stack_and_heap::stack_and_heap();
+
+  println!("\n\r--- IF STATEMENTS ---");
+  control_flow::if_statement();
+
+  println!("\n\r--- WHILE AND LOOP ---");
+  control_flow::while_and_loop();
 }
