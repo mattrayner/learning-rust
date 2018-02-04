@@ -1,5 +1,9 @@
 use std::mem;
 
+const MEANING_OF_LIFE:u8 = 42; // Constants have no fixed address
+
+static mut Z:i32 = 123; // You can make
+
 fn primitive_types() {
   // unsigned 0+
   let a:u8 = 123; // 8bits
@@ -74,8 +78,8 @@ fn operators() {
 }
 
 fn scope_and_shadowing() {
-  let a = 123;
-  let a = 1234; // You can re-declare the variable and the 'newest' value will be taken
+//  let a = 123;
+  let a = 1234; // You can re-declare a variable and the 'newest' value will be taken
 
   {
     let b = 156;
@@ -90,6 +94,32 @@ fn scope_and_shadowing() {
 //  println!("outside, b = {}", b);
 }
 
+fn defining_and_using_constants() {
+  /*
+    At compilation time, references to constants get replaced with the values of those constants.
+
+    At compilation time, the below will become:
+    println!("{}", 42);
+  */
+  println!("{}", MEANING_OF_LIFE);
+
+  /*
+    You can use static variables, which have a fixed address in memory... They can also be mutable.
+
+    However, when you are using or modifying a mutable static variable, all usages must be contained
+    within an unsafe block.
+
+    This effectively tells the compiler that you know what you are doing with this variable and
+    promise to be careful.
+  */
+  unsafe {
+    Z = 777;
+    println!("{}", Z);
+  }
+
+  // You should use const, not static...
+}
+
 fn main() {
   println!("--- PRIMITIVE TYPES ---");
   primitive_types();
@@ -99,4 +129,7 @@ fn main() {
 
   println!("\n\r--- SCOPE AND SHADOWING ---");
   scope_and_shadowing();
+
+  println!("\n\r--- DEFINING AND USING CONSTANTS ---");
+  defining_and_using_constants();
 }
