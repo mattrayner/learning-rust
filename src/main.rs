@@ -158,4 +158,7 @@ fn main() {
 
   println!("\t--- Enumerations");
   data_structures::enumerations();
+
+  println!("\t--- Unions");
+  data_structures::unions();
 }

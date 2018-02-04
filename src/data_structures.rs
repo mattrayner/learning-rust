@@ -46,3 +46,27 @@ pub fn enumerations() {
     _ => ()
   }
 }
+
+union IntOrFloat {
+  i: i32,
+  f: f32
+}
+
+fn process_value(iof: IntOrFloat) {
+  unsafe {
+    match iof {
+      IntOrFloat { i: 42 } => println!("meaning of life"),
+      IntOrFloat { f } => println!("f32 = {}", f)
+    }
+  }
+}
+
+pub fn unions() {
+  let mut iof = IntOrFloat{ i: 10 };
+  println!("iof value is {}", unsafe { iof.i });
+
+  iof.i = 42;
+
+  process_value(iof);
+  process_value(IntOrFloat { f: 1.23 });
+}
