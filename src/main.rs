@@ -73,10 +73,30 @@ fn operators() {
   println!("{} = 5? {}", x, x_is_5);
 }
 
+fn scope_and_shadowing() {
+  let a = 123;
+  let a = 1234; // You can re-declare the variable and the 'newest' value will be taken
+
+  {
+    let b = 156;
+    println!("inside, b = {}", b);
+
+
+    let a = 777;
+    println!("inside, a = {}", a);
+  }
+
+  println!("outside, a = {}", a);
+//  println!("outside, b = {}", b);
+}
+
 fn main() {
   println!("--- PRIMITIVE TYPES ---");
   primitive_types();
 
   println!("\n\r--- OPERATORS ---");
   operators();
+
+  println!("\n\r--- SCOPE AND SHADOWING ---");
+  scope_and_shadowing();
 }
