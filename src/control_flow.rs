@@ -40,3 +40,31 @@ pub fn while_and_loop() {
     if y == 1<<10 { break; } // Kick us out of this loop
   }
 }
+
+pub fn for_loop() {
+  for x in 1..11 {
+    if x == 3 { continue; } // skip 3
+
+    if x == 8 { break; } // end the loop at 8
+
+    println!("x = {}", x)
+  }
+
+  for (pos, y) in (30..41).enumerate(){
+    println!("{}: {}", pos, y);
+  }
+}
+
+pub fn match_statement() {
+  let country_code = 44; // 1 - 999
+
+  let country = match country_code {
+    44 => "UK",
+    46 => "Sweden",
+    7 => "Russia",
+    1...999 => "unknown", // A range with three dots is INCLUSIVE of the right hand side
+    _ => "invalid"
+  };
+
+  println!("the country with code {} is {}", country_code, country);
+}

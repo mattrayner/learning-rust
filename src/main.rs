@@ -143,4 +143,10 @@ fn main() {
 
   println!("\n\r--- WHILE AND LOOP ---");
   control_flow::while_and_loop();
+
+  println!("\n\r--- FOR LOOP ---");
+  control_flow::for_loop();
+
+  println!("\n\r--- MATCH STATEMENT ---");
+  control_flow::match_statement();
 }
