@@ -1,6 +1,8 @@
+#![allow(dead_code)]
 use std::mem;
 mod stack_and_heap;
 mod control_flow;
+mod data_structures;
 
 const MEANING_OF_LIFE:u8 = 42; // Constants have no fixed address
 
@@ -149,4 +151,11 @@ fn main() {
 
   println!("\n\r--- MATCH STATEMENT ---");
   control_flow::match_statement();
+
+  println!("\n\r--- DATA STRUCTURES ---");
+  println!("\t--- Structures");
+  data_structures::structures();
+
+  println!("\t--- Enumerations");
+  data_structures::enumerations();
 }
