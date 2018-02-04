@@ -1,4 +1,5 @@
 use std::mem;
+mod stack_and_heap;
 
 const MEANING_OF_LIFE:u8 = 42; // Constants have no fixed address
 
@@ -132,4 +133,7 @@ fn main() {
 
   println!("\n\r--- DEFINING AND USING CONSTANTS ---");
   defining_and_using_constants();
+
+  println!("\n\r--- STACK AND HEAP ---");
+  stack_and_heap::stack_and_heap()
 }
