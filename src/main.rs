@@ -164,4 +164,7 @@ fn main() {
 
   println!("\t--- Options");
   data_structures::options();
+
+  println!("\t--- Arrays");
+  data_structures::arrays();
 }

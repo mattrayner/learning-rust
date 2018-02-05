@@ -1,3 +1,5 @@
+use std::mem;
+
 pub fn structures() {
   struct Point {
     x: f64,
@@ -89,4 +91,49 @@ pub fn options() {
 
   // if let / while let
   if let Some(z) = result { println!("z = {}", z) };
+}
+
+pub fn arrays() {
+//  let a:[i32;5] = [1,2,3,4,5]; // explicit type
+  let mut a = [1,2,3,4,5]; // implicit type
+
+  println!("a has {} elements, and the first is {}", a.len(), a[0]);
+
+  a[0] = 321;
+  println!("a[0] = {}", a[0]);
+
+  println!("{:?}", a);
+
+  if a != [1,2,3,4,5] {
+    println!("Does not match [1,2,3,4,5]");
+  }
+
+  if a == [321,2,3,4,5] {
+    println!("Matches [321,2,3,4,5]");
+  }
+
+//  let b = [1; 10]; // implicit [i32; 10] - 40 bytes
+//  let b:[i16; 10] = [1; 10]; // explicit [i16; 10] - 20 bytes
+  let b = [1u16; 10]; // implicit-ish [i16; 10] - 20 bytes
+  for i in 0..b.len() {
+    println!("b[{}]={}", i, b[i]);
+  }
+  println!("b took up {} bytes", mem::size_of_val(&b));
+
+  let mtx:[[f32; 3]; 2] =
+    [
+      [1.0, 0.0, 0.0],
+      [0.0, 2.0, 0.0]
+    ];
+  println!("{:?}", mtx);
+
+  for i in 0..mtx.len() {
+    for j in 0..mtx[i].len() {
+      if i == j {
+        println!("mtx[{}][{}] = {}", i, j, mtx[i][j])
+      }
+    }
+  }
+
+
 }
