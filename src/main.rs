@@ -167,4 +167,16 @@ fn main() {
 
   println!("\t--- Arrays");
   data_structures::arrays();
+
+  println!("\t--- Vectors");
+  data_structures::vectors();
+
+  println!("\t--- Slices");
+  data_structures::slices();
+
+  println!("\t--- Strings");
+  data_structures::strings();
+
+  println!("\t--- Tuples");
+  data_structures::tuples();
 }

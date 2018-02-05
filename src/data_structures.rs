@@ -134,6 +134,126 @@ pub fn arrays() {
       }
     }
   }
+}
 
+pub fn vectors() {
+  let mut a = Vec::new();
+  a.push(1);
+  a.push(2);
+  a.push(3);
+  println!("a = {:?}", a);
 
+  a.push(44);
+  println!("a = {:?}", a);
+
+  // usize isize
+  let idx:usize = 0;
+  a[idx] = 100;
+  println!("a[{}] = {}", idx, a[idx]);
+
+  match a.get(6) {
+    Some(x) => println!("a[6] = {}", x),
+    None => println!("error, no such element")
+  }
+
+  for x in &a { println!("{}", x) }
+
+  a.push(77);
+  match a.pop() { // returns an Option
+    Some(x) => println!("Popped {:?} from a, a = {:?}", x, a),
+    _ => {}
+  }
+
+  while let Some(x) = a.pop() {
+    println!("{}", x)
+  }
+}
+
+fn use_slice(slice: &mut [i32]) {
+  println!("first element = {}, length = {}", slice[0], slice.len());
+
+  slice[0] = 4321;
+}
+
+pub fn slices() {
+  let mut data = [1,2,3,4,5];
+  use_slice(&mut data[1..4]);
+//  use_slice(&mut data);
+
+  println!("{:?}", data);
+}
+
+pub fn strings() {
+  // static
+  // A string like this is effectively a string of utf-8 characters
+  let s:&'static str = "hello, there!"; // &str = string slice
+//  s = "abc"; // &str are static and cannot be re-allocated
+//  let h = s[0]; // You also, cannot index into a string
+
+  for c in s.chars().rev() {
+    println!("{}", c);
+  }
+
+  if let Some(first_char) = s.chars().nth(0) {
+    println!("first character is {}", first_char)
+  }
+
+  // heap allocated
+  // String
+  let mut letters = String::new();
+
+  let mut a = 'a' as u8;
+  while a <= ('z' as u8) {
+    letters.push(a as char);
+    letters.push_str(",");
+    a += 1;
+  }
+
+  println!("{}", letters);
+
+  // &str <> String
+  let u:&str = &letters;
+  println!("&str letters: {}", u);
+
+  // concatenation
+  // String + str
+//  let z = letters + "abc";
+//  let z = letters + &letters;
+
+//  let mut abc = String::from("hello, world!");
+  let mut abc = "hello, world!".to_string();
+  abc.remove(0);
+  abc.push_str("!!");
+  println!("{}", abc.replace("ello", "goodbye"));
+}
+
+fn sum_and_product(x:i32, y:i32) -> (i32, i32) {
+  (x+y, x*y)
+}
+
+pub fn tuples() {
+  let x = 3;
+  let y = 4;
+  let sp = sum_and_product(x, y);
+
+  println!("sp = {:?}", sp);
+  println!("{0} + {1} = {2}, {0} * {1} = {3}", x, y, sp.0, sp.1);
+
+  // destructuring
+  let (a, b) = sp;
+  println!("a = {}, b = {}", a, b);
+
+  let sp2 = sum_and_product(4, 7);
+  let combined = (sp, sp2);
+  println!("{:?}", combined);
+  println!("last elem = {}", (combined.1).1);
+
+  let ((c,d), (e,f)) = combined;
+  println!("{}, {}, {}, {}", c, d, e, f);
+
+  let foo = (true, 42.0, -1i8);
+  println!("{:?}", foo);
+
+  let meaning = (42,);
+  println!("{:?}", meaning);
 }
