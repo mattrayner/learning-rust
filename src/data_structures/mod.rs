@@ -1,4 +1,5 @@
 use std::mem;
+mod pattern_matching;
 
 pub fn structures() {
   struct Point {
@@ -256,4 +257,8 @@ pub fn tuples() {
 
   let meaning = (42,);
   println!("{:?}", meaning);
+}
+
+pub fn pattern_matching() {
+  pattern_matching::pattern_matching();
 }

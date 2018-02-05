@@ -179,4 +179,7 @@ fn main() {
 
   println!("\t--- Tuples");
   data_structures::tuples();
+
+  println!("\t--- Pattern Matching");
+  data_structures::pattern_matching();
 }
