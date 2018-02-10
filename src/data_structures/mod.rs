@@ -262,3 +262,23 @@ pub fn tuples() {
 pub fn pattern_matching() {
   pattern_matching::pattern_matching();
 }
+
+// Option<T>
+pub fn generics() {
+  struct Point<T> {
+    x: T,
+    y: T
+  }
+
+  struct Line<T> {
+    start: Point<T>,
+    end: Point<T>
+  }
+
+//  let a = Point{ x: 0, y: 4 }; // Our lune must have two points with a matching type, so we can't mix i32 and f32
+  let a = Point{ x: 0.0, y: 4.0 };
+  let b = Point{ x: 1.2, y: 2.4 };
+
+  let my_line = Line{ start: a, end: b };
+  println!("Line starts with: ( x: {}, y: {} ), and end with: ( x: {}, y: {} )", (my_line.start).x, (my_line.start).y, (my_line.end).x, (my_line.end).y)
+}

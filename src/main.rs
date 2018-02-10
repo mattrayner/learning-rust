@@ -3,6 +3,7 @@ use std::mem;
 mod stack_and_heap;
 mod control_flow;
 mod data_structures;
+mod functions;
 
 const MEANING_OF_LIFE:u8 = 42; // Constants have no fixed address
 
@@ -182,4 +183,20 @@ fn main() {
 
   println!("\t--- Pattern Matching");
   data_structures::pattern_matching();
+
+  println!("\t--- Generics");
+  data_structures::generics();
+
+  println!("\n\r--- FUNCTIONS ---");
+  println!("\t--- Functions and Function Arguments");
+  functions::functions_and_function_arguments();
+
+  println!("\t--- Methods");
+  functions::methods();
+
+  println!("\t--- Closures");
+  functions::closures();
+
+  println!("\t--- Higher Order Functions");
+  functions::higher_order_functions();
 }
