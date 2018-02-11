@@ -4,6 +4,7 @@ mod stack_and_heap;
 mod control_flow;
 mod data_structures;
 mod functions;
+mod traits;
 
 const MEANING_OF_LIFE:u8 = 42; // Constants have no fixed address
 
@@ -199,4 +200,8 @@ fn main() {
 
   println!("\t--- Higher Order Functions");
   functions::higher_order_functions();
+
+  println!("\n\r--- TRAITS ---");
+  println!("\t--- Traits");
+  traits::traits();
 }
