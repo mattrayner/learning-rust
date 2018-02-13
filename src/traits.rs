@@ -109,12 +109,9 @@ impl Printable for String {
   }
 }
 
-// Dynamic dispatch
-fn print(z:&Printable) {}
-
 // Static dispatch
 fn print_it<T: Printable>(z: T) {
-  println!("{}", z.format);
+  println!("{}", z.format());
 }
 
 /*
@@ -140,6 +137,30 @@ pub fn static_dispatch() {
 //  println!("{}", a.format());
 //  println!("{}", b.format());
 
-  println!("{}", print_it(a));
-  println!("{}", print_it(b));
+  print_it(a);
+  print_it(b);
+}
+
+// Dynamic dispatch
+fn print_it_too(z: &Printable) {
+  println!("{}", z.format());
+}
+
+pub fn dynamic_dispatch() {
+  let a = 123;
+  let b = "hello".to_string();
+
+  /*
+  Dynamic dispatched uses Type Erasure - when passing a & b to print_it_too, you're passing a
+  pointer that just says yes it's a Printable, or no, it's not.
+  */
+
+  print_it_too(&a);
+  print_it_too(&b);
+
+  /*
+  Dynamic dispatch means that at run-time, print_it_too has to work out which implementation block's
+  format function should be called. This cannot be optimised at compile time and as such puts a
+  higher load on the application at run time.
+  */
 }
