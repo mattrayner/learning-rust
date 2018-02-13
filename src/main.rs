@@ -207,4 +207,7 @@ fn main() {
 
   println!("\t--- Operator Overloading");
   traits::operator_overloading();
+
+  println!("\t--- Static Dispatch");
+  traits::static_dispatch();
 }

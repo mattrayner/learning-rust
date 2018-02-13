@@ -92,3 +92,54 @@ pub fn operator_overloading() {
   let p3 = p + p2;
   println!("{:?}", p3);
 }
+
+trait Printable {
+  fn format(&self) -> String;
+}
+
+impl Printable for i32 {
+  fn format(&self) -> String {
+    format!("i32: {}", *self)
+  }
+}
+
+impl Printable for String {
+  fn format(&self) -> String {
+    format!("String: {}", *self)
+  }
+}
+
+// Dynamic dispatch
+fn print(z:&Printable) {}
+
+// Static dispatch
+fn print_it<T: Printable>(z: T) {
+  println!("{}", z.format);
+}
+
+/*
+At compilation time, we get 'monomorphisation' -> the above print_it function gets compiled into
+discreet method implementations for each type of Printable that uses it.
+
+For example, the two uses below, actually create:
+fn print_it(z: i32) {
+  println!("{}", z.format);
+}
+fn print_it(z: String) {
+  println!("{}", z.format);
+}
+
+These methods are then faster, and more efficient, to run as the calls to `print_it` below are
+replaced with references to the specific print_it for that type.
+*/
+
+pub fn static_dispatch() {
+  let a = 123;
+  let b = "hello".to_string();
+
+//  println!("{}", a.format());
+//  println!("{}", b.format());
+
+  println!("{}", print_it(a));
+  println!("{}", print_it(b));
+}
