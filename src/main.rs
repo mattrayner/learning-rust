@@ -204,4 +204,7 @@ fn main() {
   println!("\n\r--- TRAITS ---");
   println!("\t--- Traits");
   traits::traits();
+
+  println!("\t--- Operator Overloading");
+  traits::operator_overloading();
 }
