@@ -1,3 +1,5 @@
+use std;
+
 pub fn traits() {
   trait Animal {
     fn create(name: &'static str) -> Self;
@@ -120,10 +122,10 @@ discreet method implementations for each type of Printable that uses it.
 
 For example, the two uses below, actually create:
 fn print_it(z: i32) {
-  println!("{}", z.format);
+  println!("{}", format!("i32: {}", *self));
 }
 fn print_it(z: String) {
-  println!("{}", z.format);
+  println!("{}", format!("String: {}", *self));
 }
 
 These methods are then faster, and more efficient, to run as the calls to `print_it` below are
@@ -163,4 +165,36 @@ pub fn dynamic_dispatch() {
   format function should be called. This cannot be optimised at compile time and as such puts a
   higher load on the application at run time.
   */
+}
+
+pub fn why_dynamic_dispatch() {
+  struct Circle { radius: f64 }
+  struct Square { side: f64 }
+
+  trait Shape {
+    fn area(&self) -> f64;
+  }
+
+  impl Shape for Square {
+    fn area(&self) -> f64 {
+      self.side * self.side
+    }
+  }
+
+  impl Shape for Circle {
+    fn area(&self) -> f64 {
+      self.radius * self.radius * std::f64::consts::PI
+    }
+  }
+
+  let shapes:[&Shape; 4] = [
+    &Circle { radius: 1.0 },
+    &Square { side: 3.0 },
+    &Circle { radius: 2.0 },
+    &Square { side: 4.0 }
+  ];
+
+  for (i, shape) in shapes.iter().enumerate() {
+    println!("Shape #{} has area {}", i, shape.area());
+  }
 }

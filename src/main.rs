@@ -210,4 +210,10 @@ fn main() {
 
   println!("\t--- Static Dispatch");
   traits::static_dispatch();
+
+  println!("\t--- Dynamic Dispatch");
+  traits::dynamic_dispatch();
+
+  println!("\t--- Why Dynamic Dispatch");
+  traits::why_dynamic_dispatch();
 }
