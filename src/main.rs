@@ -6,6 +6,7 @@ mod data_structures;
 mod functions;
 mod traits;
 mod lifecycle_and_memory;
+mod odds_and_ends;
 
 const MEANING_OF_LIFE:u8 = 42; // Constants have no fixed address
 
@@ -230,4 +231,8 @@ fn main() {
 
   println!("\t--- Mutex for thread safe mutability");
   lifecycle_and_memory::mutex_for_thread_safe_mutability();
+
+  println!("\n\r--- Odds and ends ---");
+  println!("\t--- Consuming Crates");
+  odds_and_ends::consuming_crates();
 }
