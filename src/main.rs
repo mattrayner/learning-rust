@@ -5,6 +5,7 @@ mod control_flow;
 mod data_structures;
 mod functions;
 mod traits;
+mod lifecycle_and_memory;
 
 const MEANING_OF_LIFE:u8 = 42; // Constants have no fixed address
 
@@ -216,4 +217,17 @@ fn main() {
 
   println!("\t--- Why Dynamic Dispatch");
   traits::why_dynamic_dispatch();
+
+  println!("\n\r--- LIFECYCLE AND MEMORY ---");
+  println!("\t--- Ownership");
+  lifecycle_and_memory::ownership();
+
+  println!("\t--- Reference Counting");
+  lifecycle_and_memory::reference_counting();
+
+  println!("\t--- Automatic Reference Counting");
+  lifecycle_and_memory::automatic_reference_counting();
+
+  println!("\t--- Mutex for thread safe mutability");
+  lifecycle_and_memory::mutex_for_thread_safe_mutability();
 }
